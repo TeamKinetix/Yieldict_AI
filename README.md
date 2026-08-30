@@ -188,10 +188,5 @@ CropYield/
 
 ---
 
-## 📄 License
-This project is open-source and available under the [MIT License](LICENSE).
-
----
-
 ## 👥 Authors & Team
 Developed by **TeamKinetix**. For feedback, inquiries, or contributions, please open a GitHub Issue or Pull Request.
