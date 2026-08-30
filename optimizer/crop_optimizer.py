@@ -42,10 +42,9 @@ class CropOptimizer:
     def _find_file(self, filename: str) -> Optional[str]:
         search_paths = [
             os.path.join(os.path.dirname(__file__), "..", "important code", filename),
+            os.path.join(os.path.dirname(__file__), "..", "ML base_line trainning", "ML base_line trainning", filename),
             os.path.join(os.path.dirname(__file__), "..", filename),
             os.path.join(os.path.dirname(__file__), filename),
-            os.path.join(r"d:/CropYeild ML/important code", filename),
-            os.path.join(r"d:/CropYeild ML", filename),
         ]
         for p in search_paths:
             if os.path.exists(p):
@@ -332,3 +331,29 @@ class CropOptimizer:
             "fertilizer_optimization": fertilizer_opt,
             "climate_stress_analysis": climate_sim
         }
+
+
+if __name__ == "__main__":
+    print("=" * 70)
+    print("  * CropYield AI Optimizer Engine *")
+    print("=" * 70)
+    optimizer = CropOptimizer()
+    print("[+] Model and agricultural dataset loaded successfully!")
+    print(f"    - Supported Crops: {len(optimizer.get_crops())}")
+    print(f"    - Supported States: {len(optimizer.get_states())}")
+    print(f"    - Supported Seasons: {optimizer.get_seasons()}")
+    
+    print("\n--- Running Sample Optimization (Punjab, Kharif, 1000 ha) ---")
+    report = optimizer.generate_full_advisory(
+        state="Punjab", season="Kharif", area=1000.0,
+        annual_rainfall=800.0, fertilizer=60000.0, pesticide=250.0,
+        primary_crop="Rice"
+    )
+    print(f"Top Recommended Crop: {report['top_recommended_crops'][0]['crop']} "
+          f"(Predicted Yield: {report['top_recommended_crops'][0]['predicted_yield']:.2f} t/ha, "
+          f"Expected Revenue: Rs. {report['top_recommended_crops'][0]['expected_gross_revenue_inr']:,.2f})")
+    print(f"Fertilizer Sweet-Spot: {report['fertilizer_optimization']['optimal_dosage_kg_ha']:.1f} kg/ha "
+          f"(Potential Profit Uplift: Rs. {report['fertilizer_optimization']['potential_extra_profit_inr']:,.2f})")
+    print(f"Drought Resilience: {report['climate_stress_analysis']['yield_retention_in_drought_pct']:.1f}% yield retained under -50% rainfall.")
+    print(f"Climate Risk Level: {report['climate_stress_analysis']['climate_risk_level']}")
+    print("=" * 70)

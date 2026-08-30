@@ -934,21 +934,33 @@ class DashboardHandler(BaseHTTPRequestHandler):
         return
 
 
-def start_server(port: int = 8501):
+def start_server(port: int = 8000):
     global opt_engine
+    print("[*] Initializing CropOptimizer engine...", flush=True)
     opt_engine = CropOptimizer()
+    
     server_address = ("", port)
-    httpd = HTTPServer(server_address, DashboardHandler)
-    print("=" * 75)
-    print(f"  * CropYield AI Dashboard running live at: http://localhost:{port}")
-    print(f"    Open your web browser at: http://localhost:{port}")
-    print("=" * 75)
+    try:
+        httpd = HTTPServer(server_address, DashboardHandler)
+    except OSError as e:
+        if e.errno == 10048 or "Address already in use" in str(e):
+            port = 8080
+            server_address = ("", port)
+            httpd = HTTPServer(server_address, DashboardHandler)
+        else:
+            raise e
+
+    print("=" * 75, flush=True)
+    print(f"  * CropYield AI Optimizer Dashboard running live at: http://localhost:{port}", flush=True)
+    print(f"    Open your web browser at: http://localhost:{port}", flush=True)
+    print("=" * 75, flush=True)
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:
-        print("\n[!] Shutting down dashboard server.")
+        print("\n[!] Shutting down dashboard server.", flush=True)
         httpd.server_close()
 
 
 if __name__ == "__main__":
-    start_server(8501)
+    port_num = int(sys.argv[1]) if len(sys.argv) > 1 else 8000
+    start_server(port_num)
