@@ -2,3 +2,8 @@ ML base_line trainning/
 important code/crop_yield_model.pkl
 crop_yield_model.pkl
 crop_yield_cleaned.csv
+PITCH_AND_JUDGE_DEFENSE_GUIDE.md
+create_presentation.py
+CropYield_AI_Hackathon_Pitch.pptx
+optimizer/__pycache__/crop_optimizer.cpython-314.pyc
+optimizer/__pycache__/msp_data.cpython-314.pyc
