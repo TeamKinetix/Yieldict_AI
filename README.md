@@ -4,7 +4,6 @@
 [![Python Version](https://img.shields.io/badge/Python-3.10%2B-2d6a4f.svg?style=flat&logo=python&logoColor=white)](https://python.org)
 [![Scikit-Learn](https://img.shields.io/badge/scikit--learn-1.3%2B-orange.svg?style=flat&logo=scikitlearn&logoColor=white)](https://scikit-learn.org)
 [![Git LFS](https://img.shields.io/badge/Git%20LFS-Tracked-blue.svg?style=flat&logo=git-lfs&logoColor=white)](https://git-lfs.github.com)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 **YIELDICT AI** is a machine learning agricultural intelligence and decision-support platform designed to forecast crop yields, evaluate farm economics, and provide risk-mitigated crop recommendations for Indian agriculture.
 
@@ -53,8 +52,8 @@ Powered by an ensemble **Random Forest Regression Pipeline** ($R^2 = 0.9805$), t
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/TeamKinetix/CropYield.git
-cd CropYield
+git clone https://github.com/TeamKinetix/Yieldict_AI.git
+cd Yieldict_AI
 ```
 
 ### 2. Initialize Git LFS (for Model Weights)
@@ -189,4 +188,4 @@ CropYield/
 ---
 
 ## 👥 Authors & Team
-Developed by **TeamKinetix**. For feedback, inquiries, or contributions, please open a GitHub Issue or Pull Request.
+Developed by **Kinetix**. For feedback, inquiries, or contributions, please open a GitHub Issue or Pull Request.
